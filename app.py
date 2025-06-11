@@ -23,11 +23,12 @@ def predict_recall():
     recall_score = data.get("recall_score", 1)
 
     # Parse metadata
-    register = data.get("register", "neutral")
-    mtype = data.get("type", "literal")
-    pos = data.get("pos", "noun")
-    gender = data.get("gender", "masculine")
-    frequency = data.get("frequency", "common")
+    register = data.get("register", "unknown")
+    mtype = data.get("type", "unknown")
+    pos = data.get("pos", "unknown")
+    gender = data.get("gender", "unknown")
+    frequency = data.get("frequency", "unknown")
+
 
     # Build feature vector
     base_features = [times_seen, time_since_last_review, recall_score]

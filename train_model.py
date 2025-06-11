@@ -16,10 +16,12 @@ X = np.array([
     make_sample(3, 604800, 1, "neutral", "literal", "noun", "masculine", "extremely common"),
     make_sample(5, 300, 0, "technical", "compound", "noun", "neuter", "rare"),
     make_sample(10, 864000, 1, "poetic", "archaism", "adjective", "feminine", "extremely rare"),
+    make_sample(7, 7200, 0, "unknown", "unknown", "unknown", "unknown", "unknown")  # 👈 NEW!
 ])
 
+
 # Corresponding labels: did the user recall the word?
-y = np.array([0, 1, 1, 0, 1])
+y = np.array([0, 1, 1, 0, 1, 1])
 
 # Train and save model
 model = RandomForestClassifier()

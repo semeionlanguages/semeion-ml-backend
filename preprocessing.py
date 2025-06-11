@@ -3,25 +3,19 @@ import numpy as np
 
 # === One-hot mappings for categorical variables ===
 
-REGISTER_OPTIONS = [
-    "formal", "neutral", "informal", "slang", "technical",
-    "childish", "rare", "obsolete", "poetic", "offensive"
-]
-
-TYPE_OPTIONS = [
-    "literal", "idiomatic", "metaphorical", "euphemistic",
-    "sarcastic", "loanword", "compound", "archaism"
-]
-
-POS_OPTIONS = ["noun", "verb", "adjective", "adverb", "other"]
-
+REGISTER_OPTIONS = ["formal", "neutral", "informal", "slang", "technical", "childish", "rare", "obsolete", "poetic", "offensive", "unknown"]
+TYPE_OPTIONS = ["literal", "idiomatic", "metaphorical", "euphemistic", "sarcastic", "loanword", "compound", "archaism", "unknown"]
+POS_OPTIONS = ["noun", "verb", "adjective", "adverb", "conjunction", "other", "unknown"]
 GENDER_OPTIONS = ["masculine", "feminine", "neuter", "unknown"]
+FREQUENCY_OPTIONS = ["common", "extremely common", "rare", "extremely rare", "unknown"]
+
 
 FREQ_MAP = {
     "extremely common": 0,
     "common": 1,
     "rare": 2,
-    "extremely rare": 3
+    "extremely rare": 3,
+    "unknown": -1
 }
 
 # === Utility functions ===
@@ -40,5 +34,5 @@ def encode_metadata(register, mtype, pos, gender, frequency):
         one_hot_encode(mtype, TYPE_OPTIONS) +
         one_hot_encode(pos, POS_OPTIONS) +
         one_hot_encode(gender, GENDER_OPTIONS) +
-        [FREQ_MAP.get(frequency, 1)]  # default to 'common'
+        [FREQ_MAP.get(frequency, -1)]
     )
